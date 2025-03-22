@@ -5,44 +5,35 @@ dotenv.config({ path: envFile });
 const cors = require("cors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const rutasLogin = require("./login/Routes/loginModule.routes");
-const rutasS3 = require("./S3/s3.routes");
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 
 const app = express();
 
-// login using jwt
-
 const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "API de capacitacion de react",
+      title: "API de proyecto para Altertex",
       version: "1.0.0",
       description: "Documentación generada con Swagger",
     },
     servers: [
       {
-        url: "https://nr8nw243lb.execute-api.us-east-1.amazonaws.com",
+        url: process.env.API_GATEWAY_URL,
       },
     ],
   },
-  apis: ["./login/Routes/loginModule.routes.js", "./S3/s3.routes.js"],
+  apis: [""], // agregar las rutas a los archivos que contienen los endpoints
 };
 
 const specs = swaggerJsDoc(options);
-
-// Middleware para Swagger UI
 
 app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://main.d19eu3ca4s0hn8.amplifyapp.com",
-    ],
+    origin: [process.env.LOCAL_URL, process.env.DEPLOYED_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // ✅ Allow cookies
   })
@@ -51,11 +42,9 @@ app.use(
 app.use(cookieParser());
 
 app.get("/", async (req, res) => {
-  res.status(201).json({ message: "Pene" });
+  res.status(201).json({ message: "Proyecto TEXT&LINES" });
 });
 
-app.use("/api", rutasLogin);
-app.use("/s3", rutasS3);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 const port = process.env.PORT || 5000;
