@@ -45,7 +45,7 @@ app.get("/", async (req, res) => {
   res.status(201).json({ message: "Proyecto TEXT&LINES" });
 });
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+// app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 const port = process.env.PORT || 5000;
 
