@@ -45,6 +45,13 @@ app.get("/", async (req, res) => {
   res.status(201).json({ message: "Proyecto TEXT&LINES" });
 });
 
+const lukeSkywalker = "Luke Skywalker";
+
+// malo
+const obj = {
+  lukeSkywalker,
+};
+
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 const port = process.env.PORT || 5000;
