@@ -10,24 +10,24 @@ const swaggerJsDoc = require("swagger-jsdoc");
 
 const app = express();
 
-const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "API de proyecto para Altertex",
-      version: "1.0.0",
-      description: "Documentación generada con Swagger",
-    },
-    servers: [
-      {
-        url: process.env.API_GATEWAY_URL,
-      },
-    ],
-  },
-  apis: [""], // agregar las rutas a los archivos que contienen los endpoints
-};
+// const options = {
+//   definition: {
+//     openapi: "3.0.0",
+//     info: {
+//       title: "API de proyecto para Altertex",
+//       version: "1.0.0",
+//       description: "Documentación generada con Swagger",
+//     },
+//     servers: [
+//       {
+//         url: process.env.API_GATEWAY_URL,
+//       },
+//     ],
+//   },
+//   apis: [""], // agregar las rutas a los archivos que contienen los endpoints
+// };
 
-const specs = swaggerJsDoc(options);
+// const specs = swaggerJsDoc(options);
 
 app.use(express.json());
 
