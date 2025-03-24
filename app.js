@@ -41,8 +41,10 @@ app.use(
 
 app.use(cookieParser());
 
+const enviroment = process.env.NODE_ENV;
+
 app.get("/", async (req, res) => {
-  res.status(201).json({ message: "Proyecto TEXT&LINES" });
+  res.status(201).json({ message: `Proyecto TEXT&LINES ${enviroment}` });
 });
 
 // app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
