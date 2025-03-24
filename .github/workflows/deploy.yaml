@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - Staging
+      - staging
 
 jobs:
   deploy-production:
