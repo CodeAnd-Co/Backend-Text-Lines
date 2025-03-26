@@ -5,8 +5,8 @@ dotenv.config({ path: envFile });
 const cors = require("cors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const swaggerUI = require("swagger-ui-express");
-const swaggerJsDoc = require("swagger-jsdoc");
+// const swaggerUI = require("swagger-ui-express");
+// const swaggerJsDoc = require("swagger-jsdoc");
 
 const app = express();
 
@@ -41,8 +41,10 @@ app.use(
 
 app.use(cookieParser());
 
+const enviroment = process.env.NODE_ENV;
+
 app.get("/", async (req, res) => {
-  res.status(201).json({ message: "Proyecto TEXT&LINES" });
+  res.status(201).json({ message: `Proyecto TEXT&LINES ${enviroment}` });
 });
 
 // app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
@@ -52,5 +54,4 @@ const port = process.env.PORT || 5000;
 app.listen(port, () =>
   console.log(
     `Server running on port ${port} ${port} in ${process.env.NODE_ENV} mode.`
-  )
-);
+  ));
