@@ -5,6 +5,7 @@ dotenv.config({ path: envFile });
 const cors = require("cors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const checkHeader = require("./util/middlewares/checkHeader");
 // const swaggerUI = require("swagger-ui-express");
 // const swaggerJsDoc = require("swagger-jsdoc");
 
@@ -39,6 +40,8 @@ app.use(
   })
 );
 
+app.use(checkHeader("x-api-key", "Api key invalida"));
+
 app.use(cookieParser());
 
 const enviroment = process.env.NODE_ENV;
@@ -54,4 +57,5 @@ const port = process.env.PORT || 5000;
 app.listen(port, () =>
   console.log(
     `Server running on port ${port} ${port} in ${process.env.NODE_ENV} mode.`
-  ));
+  )
+);
