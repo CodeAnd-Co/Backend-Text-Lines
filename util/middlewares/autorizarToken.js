@@ -11,12 +11,12 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = verified;
+    const verificado = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = verificado;
     console.log("Verificado");
     next();
-  } catch (err) {
+  } catch (error) {
     console.log("no Verificado");
-    res.status(401).json({ message: "Token inválido", error: err });
+    res.status(401).json({ message: "Token inválido", error: error });
   }
 };
