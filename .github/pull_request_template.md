@@ -1,9 +1,3 @@
-## Plantilla PR BackEnd
-
-Última actualización 26/03/25
-
----
-
 ### Autores
 
 | Nombre                                 | Rol   |
